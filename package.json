@@ -1,0 +1,37 @@
+{
+  "name": "minesweeper",
+  "version": "1.0.0",
+  "description": "Minesweeper game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "author": "Muhammad Zourdy <hey@zourdyzou.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zourdyzou/minesweeper.git"
+  },
+  "keywords": [
+    "React",
+    "Redux"
+  ],
+  "bugs": {
+    "url": "https://github.com/zourdyzou/minesweeper/issues"
+  },
+  "homepage": "https://github.com/zourdyzou/minesweeper#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "typescript": "^4.7.4"
+  }
+}
