@@ -4,7 +4,7 @@ type PermissionsWithoutAdminRole = Exclude<UserPermissionsRole, "admin">;
 
 interface DepartmentsForPermissionRole {
   depName: string;
-  levelClearence: number;
+  levelClearance: number;
 }
 
 const DepsForPermission: Record<
@@ -13,15 +13,15 @@ const DepsForPermission: Record<
 > = {
   admin: {
     depName: "security engineer",
-    levelClearence: 10,
+    levelClearance: 10,
   },
   user: {
     depName: "Sales Markerting",
-    levelClearence: 5,
+    levelClearance: 5,
   },
   manager: {
     depName: "Marketing",
-    levelClearence: 10,
+    levelClearance: 10,
   },
 };
 
@@ -34,6 +34,37 @@ type BasicUser<A = boolean, P = TuplePermissions> = {
   isAdmin: A;
   permissions?: P;
 };
+
+type AdvancedUser = {
+  account: number;
+};
+
+type FullUser<A = boolean, P = string[]> = BasicUser<A, P> & AdvancedUser;
+
+type BasicUserReadonly = Readonly<BasicUser>;
+type BasicUserRequired = Required<BasicUser>;
+type BasicUserPartial = Partial<BasicUser>;
+
+type BasicUserReadonlyRequired = Readonly<Required<BasicUser>>;
+
+const user: FullUser<boolean> = {
+  name: "Nick",
+  surname: "Ovchinnikov",
+  age: 30,
+  isAdmin: true,
+  account: 100,
+  permissions: ["admin", "user"],
+};
+
+user.name = "Zourdy";
+
+const usersArray: FullUser[] = [user, user];
+
+function getFirstItem<T>(arr: T[]) {
+  return arr[0];
+}
+
+// getFirstItem<FullUser<boolean, TuplePermissions>>()
 
 type BasicUserWithoutPermissions = Omit<BasicUser, "permissions">;
 
