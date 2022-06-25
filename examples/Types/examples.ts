@@ -68,8 +68,23 @@ function getFirstItem<T>(arr: T[]) {
 
 type BasicUserWithoutPermissions = Omit<BasicUser, "permissions">;
 
+type BasicFunction = () => FullUser[];
+
+type getFirstReturnType = ReturnType<BasicFunction>;
+
+getFirstItem<FullUser>(usersArray);
+
+type MathFunc<T = number> = (a: T, b: T) => T;
+
+const mul: MathFunc = (a, b) => a * b;
+
+const add: MathFunc = (a, b) => a + b;
+
 export {
   DepsForPermission,
   BasicUserWithoutPermissions,
   PermissionsWithoutAdminRole,
+  BasicUserPartial,
+  BasicUserReadonly,
+  BasicUserReadonlyRequired,
 };
