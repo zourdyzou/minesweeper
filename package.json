@@ -7,6 +7,8 @@
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch --mode=development",
+    "serve": "webpack serve --mode=development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "directories": {
@@ -20,7 +22,10 @@
   },
   "keywords": [
     "React",
-    "Redux"
+    "Redux",
+    "TypeScript",
+    "Webpack",
+    "Browser Game"
   ],
   "bugs": {
     "url": "https://github.com/zourdyzou/minesweeper/issues"
@@ -40,13 +45,16 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^28.1.1",
     "prettier": "^2.7.1",
     "sass-loader": "^13.0.1",
     "style-loader": "^3.3.1",
     "typescript": "^4.7.4",
+    "url-loader": "^4.1.1",
     "webpack": "^5.73.0",
-    "webpack-cli": "^4.10.0"
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.2"
   },
   "dependencies": {
     "@babel/cli": "^7.17.10",

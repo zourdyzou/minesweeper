@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -29,8 +30,13 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["css-loader"],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: `${__dirname}/public.index.html`,
+    }),
+  ],
 };
