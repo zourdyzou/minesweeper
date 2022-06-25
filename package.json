@@ -4,6 +4,9 @@
   "description": "Minesweeper game",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "directories": {
@@ -29,6 +32,7 @@
     "@types/react-dom": "^18.0.5",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
+    "babel-loader": "^8.2.5",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",

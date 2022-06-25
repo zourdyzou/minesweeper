@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 
-const App: FunctionComponent = () => {
+export const App: FunctionComponent = () => {
   return (
     <div className="App-container">
       <p>
@@ -11,4 +11,3 @@ const App: FunctionComponent = () => {
 };
 
 
-export default App;
