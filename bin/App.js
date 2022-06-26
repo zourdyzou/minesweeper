@@ -12,7 +12,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var App = function App() {
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "App-container"
-  }, /*#__PURE__*/_react["default"].createElement("p", null, "Edit ", /*#__PURE__*/_react["default"].createElement("code", null, "src/App.tsx"), " and save to reload the browser"));
+  }, /*#__PURE__*/_react["default"].createElement("p", null, "Edit ", /*#__PURE__*/_react["default"].createElement("code", null, "src/app.tsx"), " and save to reload the browser"));
 };
 
 var _default = App;

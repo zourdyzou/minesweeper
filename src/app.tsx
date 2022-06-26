@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
-import { PropsWithChildrenOnly } from "./react";
 
+import { PropsWithChildrenOnly } from "./react";
+import "./app.scss";
 
 export const App: FunctionComponent = () => {
   return (
