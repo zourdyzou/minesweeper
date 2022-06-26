@@ -1,12 +1,13 @@
 import React, { FunctionComponent } from "react";
 
 import { PropsWithChildrenOnly } from "./react";
+import ReactLogo from "./logo.svg";
 import "./app.scss";
 
 export const App: FunctionComponent = () => {
   return (
     <div className="App-container">
-      <Header>
+      <Header logo={ReactLogo}>
         <p>
           Edit <code>src/App.tsx</code> and save to reload the browser
         </p>
