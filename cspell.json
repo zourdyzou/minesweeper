@@ -1,0 +1,10 @@
+{
+  "version": "0.2",
+  "words": ["browserconfig", "corejs", "lcov", "msapplication", "mstile", "transpiling"],
+  "ignorePaths": ["package.json", "package-lock.json"],
+  "useGitignore": true,
+  "cache": {
+    "useCache": true,
+    "cacheLocation": "./node_modules/.cache/cspell/.cspell"
+  }
+}
