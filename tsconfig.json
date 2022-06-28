@@ -16,10 +16,12 @@
       "test/*": ["./test/*"],
       "@/*": ["./src/*"],
       "types/*": ["./src/@types/*"],
-      "@/components/*": ["./src/components/*"]
+      "@/components/*": ["./src/components/*"],
+      "@/assets/*": ["./src/assets/*"]
     },
-    "typeRoots": ["src/types", "node_modules/@types"],
+    "typeRoots": ["src/@types", "node_modules/@types"],
     "baseUrl": "."
   },
-  "include": ["src", "test"]
+  "include": ["src", "test"],
+  "exclude": ["node_modules"]
 }

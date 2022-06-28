@@ -44,8 +44,9 @@ module.exports = function () {
         "@/": path.resolve(__dirname, "src"),
         "types/": path.resolve(__dirname, "src/@types"),
         "@/components/": path.resolve(__dirname, "src/components"),
+        "@/assets/": path.resolve(__dirname, "src/assets")
       },
-      extensions: [".js", ".jsx", ".ts", ".tsx", ".json", ".d.ts", ".scss"],
+      extensions: [".js", ".jsx", ".ts", ".tsx", ".json", ".d.ts", ".scss", ".svg", ".jpg", ".png", ".jpeg", ".gif"],
     },
     module: {
       rules: [
@@ -59,7 +60,7 @@ module.exports = function () {
           type: "asset",
         },
         {
-          test: /\.svg$/,
+          test: /\.svg$/i,
           type: "asset",
           generator: {
             dataUrl: (content) => svgToMiniDataURI(content.toString()),

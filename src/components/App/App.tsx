@@ -1,12 +1,13 @@
 import type { FunctionComponent, ReactElement } from "react";
-import ReactLogo from "../../logo.svg";
+import logo from '../../assets/logo.svg';
 import styles from "./App.module.scss";
-import type { PropsWithChildrenOnly } from "@/@types/react";
+import type { PropsWithChildrenOnly } from "types/react";
+
 
 export function App(): ReactElement {
   return (
     <div className={styles.appContainer}>
-      <Header logo={ReactLogo}>
+      <Header logo={logo}>
         <p>
           Edit <code>src/App.tsx</code> and save to reload the browser
         </p>
