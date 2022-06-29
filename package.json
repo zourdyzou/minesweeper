@@ -2,17 +2,18 @@
   "name": "minesweeper",
   "version": "1.0.0",
   "description": "Minesweeper game",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "scripts": {
-    "build": "npm run build:production",
-    "build:production": "npm run clean:dist && webpack --node-env production",
-    "build:development": "npm run clean:dist && webpack --node-env development",
-    "bundle-analysis": "webpack --node-env production --env showBundleAnalysis",
-    "watch": "webpack --watch --mode=development",
-    "start": "webpack serve",
     "clean": "rm -rf node_modules coverage dist",
     "clean:dist": "rm -rf dist",
-    "test": "jest"
+    "test": "jest",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "profile": "cross-env NODE_ENV=production webpack --profile --json --config webpack.config.js > ./dist/profile.json && webpack-bundle-analyzer ./dist/profile.json",
+    "start": "cross-env WEBPACK_IS_DEV_SERVER=true NODE_ENV=development webpack serve --config webpack.config.js",
+    "release": "npm version patch",
+    "update-hooks": "npx simple-git-hooks",
+    "prerelease": "npm run update-hooks",
+    "postinstall": "npm run update-hooks"
   },
   "directories": {
     "example": "examples"
@@ -35,6 +36,10 @@
   },
   "engines": {
     "node": ">=16.8.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged",
+    "post-commit": "git update-index --again"
   },
   "homepage": "https://github.com/zourdyzou/minesweeper#readme",
   "devDependencies": {
@@ -134,5 +139,15 @@
     "react-dom": "^18.2.0",
     "classnames": "^2.3.1",
     "normalize.css": "^8.0.1"
+  },
+  "importSort": {
+    ".ts, .tsx": {
+      "style": "module-and-prefix",
+      "parser": "typescript"
+    },
+    ".js, .jsx": {
+      "style": "module-and-prefix",
+      "parser": "babylon"
+    }
   }
 }
