@@ -1,28 +1,9 @@
-/* eslint-env node */
+import merge from 'webpack-merge';
 
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
-const { merge: webpackMerge } = require("webpack-merge");
-const webpackCommon = require("./webpack.common");
-const webpackDev = require("./webpack.dev");
-const webpackProd = require("./webpack.prod");
+import baseConfig from './webpack/base';
+import devConfig from './webpack/dev';
+import prodConfig from './webpack/prod';
+import {isProd} from './webpack/utils/env';
 
-module.exports = function (env = {}) {
-  const isProduction = process.env.NODE_ENV === "production";
-
-  const commonWebpackConfig = webpackCommon();
-
-  if (env.showBundleAnalysis) {
-    return webpackMerge(commonWebpackConfig, webpackProd(), {
-      plugins: [
-        new BundleAnalyzerPlugin({
-          defaultSizes: "parsed",
-          openAnalyzer: true,
-        }),
-      ],
-    });
-  }
-  if (isProduction) {
-    return webpackMerge(commonWebpackConfig, webpackProd());
-  }
-  return webpackMerge(commonWebpackConfig, webpackDev());
-};
+export default () =>
+    isProd ? merge(baseConfig, prodConfig) : merge(baseConfig, devConfig);

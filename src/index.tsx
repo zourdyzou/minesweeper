@@ -1,7 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import '@styles/styles.css';
+/**
+ * Created by: Andrey Polyakov (andrey@polyakov.im)
+ */
+import '@styles/styles.less';
+import '@styles/styles.scss';
 
-import { App } from "./components/App";
-import "./index.scss";
+import React from 'react';
+import ReactDom from 'react-dom';
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import {App} from '@components/app/app';
+
+ReactDom.render(<App />, document.getElementById('root'));
