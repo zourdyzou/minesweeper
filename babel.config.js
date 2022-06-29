@@ -1,34 +1,25 @@
 /* eslint-env node */
 
 module.exports = (api) => {
-  const isTest = api.env("test");
-  const isDev = api.env("development");
+  const mode = process.env.NODE_ENV ?? 'production';
+
+  // This caches the Babel config by environment.
+  api.cache.using(() => mode);
+
   return {
-    plugins: [...(isDev ? ["react-refresh/babel"] : [])],
     presets: [
       [
-        "@babel/env",
+        '@babel/preset-env',
         {
-          bugfixes: true,
-          useBuiltIns: "usage",
+          targets: {
+            browsers: ['>1%', 'last 4 versions', 'not ie < 9'],
+          },
+          useBuiltIns: 'usage',
+          debug: false,
           corejs: 3,
-          shippedProposals: true,
-          ...(isTest
-            ? {
-                targets: {
-                  node: "current",
-                },
-              }
-            : {}),
         },
       ],
-      [
-        "@babel/react",
-        {
-          useBuiltIns: true,
-          runtime: "automatic",
-        },
-      ],
+      '@babel/preset-react',
       [
         "@babel/typescript",
         {
@@ -37,5 +28,14 @@ module.exports = (api) => {
         },
       ],
     ],
+    plugins: [
+      '@babel/plugin-syntax-dynamic-import',
+      '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-proposal-export-namespace-from',
+      '@babel/plugin-proposal-throw-expressions',
+      '@babel/proposal-object-rest-spread',
+      // Applies the react-refresh Babel plugin on non-production modes only
+      mode !== 'production' && 'react-refresh/babel',
+    ].filter(Boolean),
   };
 };
