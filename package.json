@@ -64,7 +64,7 @@
     "jest-environment-jsdom": "^28.1.0",
     "lint-staged": "^12.4.2",
     "mini-svg-data-uri": "^1.4.4",
-    "npm-check-updates": "^13.0.3",
+    "npm-check-updates": "14.1.1",
     "postcss-preset-env": "^7.7.2",
     "@babel/core": "~7.16.7",
     "@babel/plugin-proposal-class-properties": "~7.16.7",
