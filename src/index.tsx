@@ -1,6 +1,5 @@
-import "@styles/styles.css";
-import "@styles/styles.less";
 import "@styles/styles.scss";
+import "normalize.css/normalize.css";
 
 import { App } from "@components/app/app";
 import React from "react";
