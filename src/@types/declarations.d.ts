@@ -14,7 +14,7 @@ declare module "*.svg" {
   export default ReactComponent;
 }
 
-declare module '*.json' {
+declare module "*.json" {
   const content: Record<string, string>;
   export default content;
 }
