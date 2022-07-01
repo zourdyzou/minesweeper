@@ -2,6 +2,7 @@
 // Please do not change this file!
 declare namespace AppModuleScssNamespace {
   export interface IAppModuleScss {
+    stylesContainer: string;
     stylesHeader: string;
     stylesImage: string;
     stylesLink: string;

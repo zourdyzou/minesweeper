@@ -2,8 +2,7 @@ import image from "@assets/images/yuri-gagarin.jpeg";
 import classNames from "classnames";
 import React, { lazy } from "react";
 
-import { stylesContainer } from "./app.module.less";
-import { stylesHeader, stylesImage, stylesLink } from "./app.module.scss";
+import { stylesContainer, stylesHeader, stylesImage, stylesLink } from "./app.module.scss";
 
 // const LazyStrawberryIcon = lazy(() => import("./strawberry"));
 

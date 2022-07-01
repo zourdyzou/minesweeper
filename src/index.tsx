@@ -1,7 +1,7 @@
 import "@styles/styles.scss";
 import "normalize.css/normalize.css";
 
-import { App } from "@components/App/app";
+import { App } from "@components/app";
 import React from "react";
 import ReactDom from "react-dom";
 
