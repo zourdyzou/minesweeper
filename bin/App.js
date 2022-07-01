@@ -21,7 +21,7 @@ var App = function App() {
       "p",
       null,
       "Edit ",
-      /*#__PURE__*/ _react["default"].createElement("code", null, "src/App.tsx"),
+      /*#__PURE__*/ _react["default"].createElement("code", null, "src/app.tsx"),
       " and save to reload the browser"
     )
   );

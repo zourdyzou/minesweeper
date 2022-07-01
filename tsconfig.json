@@ -19,13 +19,14 @@
       "@src/*": ["src/*"],
       "@images/*": ["src/images/*"],
       "@styles/*": ["src/styles/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "importsNotUsedAsValues": "preserve",
     "incremental": true
   },
-  "include": ["src"],
+  "include": ["src", "webpack"],
   "exclude": ["**/node_modules", "**/.*/"]
 }

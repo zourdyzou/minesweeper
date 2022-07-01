@@ -1,3 +1,9 @@
 /node_modules
 /coverage
 /dist
+
+babel.config.js
+prettier.config.js
+postcss.config.js
+.eslintrc.js
+jest.config.js
