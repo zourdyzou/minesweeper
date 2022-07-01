@@ -27,6 +27,6 @@
     "importsNotUsedAsValues": "preserve",
     "incremental": true
   },
-  "include": ["src", "webpack"],
+  "include": ["src", "webpack", "test"],
   "exclude": ["**/node_modules", "**/.*/"]
 }
