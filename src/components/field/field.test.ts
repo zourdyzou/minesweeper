@@ -87,6 +87,12 @@ describe("Field Generator", () => {
 
       console.table(field);
       console.table(flatField);
+
+      const cellsWithBombs = flatField.filter((cell) => cell === bomb);
+      const cellWithoutBombs = flatField.filter((cell) => cell === empty);
+
+      expect(cellsWithBombs).toHaveLength(5);
+      expect(cellWithoutBombs).toHaveLength(4);
     });
   });
 });

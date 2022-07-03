@@ -15,6 +15,11 @@ export const CellState: Record<string, Cell> = {
 export const generateFieldWithDefaultState = (size: number, state: Cell = CellState.empty): Field =>
   new Array(size).fill(null).map(() => new Array(size).fill(state));
 
+/**
+ *
+ * @param size
+ * @param probability
+ */
 export const fieldGenerator = (size: number, probability: number): Field => {
   if (probability < 0 || probability > 1) {
     throw new Error("Probability must be between 0 and 1");
@@ -27,12 +32,12 @@ export const fieldGenerator = (size: number, probability: number): Field => {
   // cells with bombs included
   let restCellsWithBombs = unprocessedCells * probability;
 
+  // y = rows, x = columns
   for (let y = 0; y < size; y++) {
     for (let x = 0; x < size; x++) {
-      if (restCellsWithBombs === 0) {
-        return result;
-      }
-      if (restCellsWithBombs / unprocessedCells > 0) {
+      if (restCellsWithBombs === 0) return result;
+
+      if (restCellsWithBombs / unprocessedCells > Math.random()) {
         result[y][x] = CellState.bomb;
         restCellsWithBombs--;
       }
