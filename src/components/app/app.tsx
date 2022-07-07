@@ -1,4 +1,6 @@
 import image from "@assets/images/yuri-gagarin.jpeg";
+import { Icon } from "@components/icons/icon-comp";
+import StrawberryIcon from "@images/strawberry.svg";
 import classNames from "classnames";
 import React from "react";
 
@@ -12,12 +14,11 @@ export const App = (): React.ReactElement => {
       <div className={stylesHeader}>Gratuliere Comrades, It is working pretty well.</div>
 
       <div>
-        <img src={image} className={stylesImage} alt="yee-haw" />
-
+        {/*<img src={image} className={stylesImage} alt="yee-haw" />*/}
+        <Icon iconSource={StrawberryIcon} className={stylesImage} />
         <a className={classNames(stylesLink)} href="https://github.com/glook/webpack-typescript-react" target="_blank">
           &nbsp;
         </a>
-
         {/*<React.Suspense fallback={"loading..."}>*/}
         {/*  <SVGIconComponent name="strawberry" className={stylesImage} />*/}
         {/*</React.Suspense>*/}

@@ -13,7 +13,7 @@
     "release": "npm version patch",
     "update-hooks": "npx simple-git-hooks",
     "prerelease": "npm run update-hooks",
-    "postinstall": "npm run update-hooks",
+    "postinstall": "npm run update-hooks && node ./scripts/hello.js",
     "docs:generate": "typedoc"
   },
   "directories": {
@@ -138,6 +138,8 @@
     "whatwg-fetch": "^3.6.2"
   },
   "dependencies": {
+    "chalk": "^5.0.1",
+    "chalk-table": "^1.0.2",
     "classnames": "^2.3.1",
     "dotenv-webpack": "^7.1.1",
     "normalize.css": "^8.0.1",

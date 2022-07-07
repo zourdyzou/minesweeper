@@ -8,3 +8,4 @@ postcss.config.js
 .eslintrc.js
 jest.config.js
 webpack.config.babel.js
+scripts

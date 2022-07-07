@@ -1,3 +1,1 @@
-import SVGIconComponent from "./icon-comp";
-
-export default SVGIconComponent;
+export * from "./icon-comp";
