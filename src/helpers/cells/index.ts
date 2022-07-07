@@ -1,1 +1,1 @@
-export * from "./cells-manipulator";
+export { incrementNeighbours } from "./cells-manipulator";
