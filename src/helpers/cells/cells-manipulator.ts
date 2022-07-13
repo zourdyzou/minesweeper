@@ -1,4 +1,4 @@
-import { Cell, Coordinates, Field } from "@helpers/field";
+import { Cell, Coordinates, Field } from "../field";
 
 /**
  * Get neighbour cells indexes
