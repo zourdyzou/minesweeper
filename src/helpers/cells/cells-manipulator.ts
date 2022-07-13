@@ -26,5 +26,17 @@ export const checkItemInField = ([y, x]: Coordinates, { length }: Field): boolea
   y >= 0 && x >= 0 && length - y > 0 && length - x > 0;
 
 export const incrementNeighbours = (coords: Coordinates, field: Field): Field => {
+  const items = getNeighbours(coords);
+
+  for (const [y, x] of Object.values(items)) {
+    if (checkItemInField([y, x], field)) {
+      const cell = field[y][x];
+
+      if (cell < 8) {
+        field[y][x] = (cell + 1) as Cell;
+      }
+    }
+  }
+
   return field;
 };

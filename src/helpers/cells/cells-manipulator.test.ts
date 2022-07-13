@@ -13,7 +13,7 @@ describe("Check neighbours selectors", function () {
       bottom: [1, 0],
       bottomLeft: [1, -1],
       left: [0, -1],
-      leftTop: [-1, 1],
+      leftTop: [-1, -1],
     });
   });
 
@@ -45,6 +45,32 @@ describe("checkItemField fn() test", function () {
 
     it("should in x and y range", function () {
       expect(checkItemInField([0, 0], field)).toBe(true);
+    });
+  });
+
+  describe("check big fields", function () {
+    const bigField: Field = [
+      [empty, empty, empty, empty, empty],
+      [empty, empty, empty, empty, empty],
+      [empty, empty, empty, empty, empty],
+      [empty, empty, empty, empty, empty],
+      [empty, empty, empty, empty, empty],
+    ]; // 5x5 fields
+
+    it("should ouut of x range", function () {
+      expect(checkItemInField([5, 0], bigField)).toBe(false);
+    });
+
+    it("should out of x range with negative index", function () {
+      expect(checkItemInField([-1, 0], bigField)).toBe(false);
+    });
+
+    it("should out of y range", function () {
+      expect(checkItemInField([0, 5], bigField)).toBe(false);
+    });
+
+    it("should in x and y range", function () {
+      expect(checkItemInField([3, 4], bigField)).toBe(true);
     });
   });
 });

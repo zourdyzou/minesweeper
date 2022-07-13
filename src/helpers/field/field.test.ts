@@ -66,30 +66,14 @@ describe("Field Generator", () => {
     });
 
     it("should have 2x2 field with 50% probability mines(bomb)", function () {
-      expect(fieldGenerator(2, 0.5)).toStrictEqual([
-        [bomb, bomb],
-        [empty, empty],
-      ]);
-    });
+      const field = fieldGenerator(2, 0.5);
+      const flatField = field.flat();
 
-    it("should have 4x4 field with 50% of probability mines(bomb)", function () {
-      expect(fieldGenerator(4, 0.5)).toStrictEqual([
-        [bomb, bomb, bomb, bomb],
-        [bomb, bomb, bomb, bomb],
-        [empty, empty, empty, empty],
-        [empty, empty, empty, empty],
-      ]);
-    });
+      const cellsWithBombs = flatField.filter((cell) => cell === bomb);
+      const cellWithoutBombs = flatField.filter((cell) => cell === 2);
 
-    // it("should have 3x3 field with 50% of probability mines(bomb)", function () {
-    //   const field = fieldGenerator(3, 0.5);
-    //   const flatField = field.flat();
-    //
-    //   const cellsWithBombs = flatField.filter((cell) => cell === bomb);
-    //   const cellWithoutBombs = flatField.filter((cell) => cell === empty);
-    //
-    //   expect(cellsWithBombs).toHaveLength(5);
-    //   expect(cellWithoutBombs).toHaveLength(4);
-    // });
+      expect(cellsWithBombs).toHaveLength(2);
+      expect(cellWithoutBombs).toHaveLength(2);
+    });
   });
 });
