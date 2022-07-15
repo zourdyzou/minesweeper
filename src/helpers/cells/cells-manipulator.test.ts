@@ -95,5 +95,20 @@ describe("Check Increment Neighbours on each cells", () => {
         [1, 1],
       ]);
     });
+
+    it("should have Field with size 2x2 with two mines", function () {
+      expect(
+        incrementNeighbours(
+          [0, 0],
+          [
+            [bomb, empty],
+            [empty, bomb],
+          ]
+        )
+      ).toStrictEqual([
+        [bomb, 1],
+        [1, bomb],
+      ]);
+    });
   });
 });

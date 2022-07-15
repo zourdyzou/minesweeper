@@ -1,4 +1,4 @@
-import image from "@assets/images/yuri-gagarin.jpeg";
+// import image from "@assets/images/yuri-gagarin.jpeg";
 import { Icon } from "@components/icons/icon-comp";
 import StrawberryIcon from "@images/strawberry.svg";
 import classNames from "classnames";
@@ -8,7 +8,7 @@ import { stylesContainer, stylesHeader, stylesImage, stylesLink } from "./app.mo
 
 // const SVGIconComponent = React.lazy(() => import("@components/icons"));
 
-export const App = (): React.ReactElement => {
+export const App: React.FunctionComponent = () => {
   return (
     <div className={stylesContainer}>
       <div className={stylesHeader}>Gratuliere Comrades, It is working pretty well.</div>

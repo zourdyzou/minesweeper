@@ -2,20 +2,20 @@ const path = require("path");
 
 module.exports = {
   clearMocks: true,
-  restoreMocks: true,
   collectCoverage: true,
-  collectCoverageFrom: [path.resolve(__dirname, "src/**/*.{js,jsx,ts,tsx}")],
+  collectCoverageFrom: ["**/*.{ts,tsx}", "!**/*.d.ts", "!**/node_modules/**"],
   coverageDirectory: "coverage",
   coverageReporters: ["text-summary", "lcov"],
+  testMatch: ["<rootDir>/src/**/*.(spec|test).ts?(x)"],
   coverageThreshold: {
     global: {
-      branches: 95,
-      functions: 99,
-      lines: 99,
-      statements: 95,
+      branches: 80,
+      functions: 50,
+      lines: 50,
+      statements: 80,
     },
   },
-  errorOnDeprecated: true,
+  errorOnDeprecated: false,
   moduleNameMapper: {
     "\\.(jpg|jpeg|png|gif|webp|svg|bmp|woff|woff2|ttf)$": "<rootDir>/test/mocks/fileMock.js",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
@@ -24,9 +24,7 @@ module.exports = {
   },
   setupFilesAfterEnv: ["<rootDir>/test/setup.ts"],
   globalTeardown: "<rootDir>/test/teardown.ts",
-  fakeTimers: {
-    enableGlobally: true,
-  },
+
   verbose: true,
   testEnvironment: "jsdom",
 };
