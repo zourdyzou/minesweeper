@@ -6,7 +6,7 @@ import { DefinePlugin } from "webpack";
  *     isProd: true
  * }
  */
-import { isDev, isDevServer, isProd, mode } from "../utils/env";
+import { isDev, isDevServer, isProd } from "../utils/env";
 
 const config = {
   IS_PROD: isProd,

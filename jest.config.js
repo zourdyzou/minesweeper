@@ -6,7 +6,7 @@ module.exports = {
   collectCoverageFrom: ["**/*.{ts,tsx}", "!**/*.d.ts", "!**/node_modules/**"],
   coverageDirectory: "coverage",
   coverageReporters: ["text-summary", "lcov"],
-  testMatch: ["<rootDir>/src/**/*.(spec|test).ts?(x)"],
+  testMatch: ["<rootDir>/src/**/?(*.)+(spec|test).[jt]s?(x)"],
   coverageThreshold: {
     global: {
       branches: 80,
