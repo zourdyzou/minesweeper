@@ -1,5 +1,7 @@
 // cspell:words setstate, eqeqeq, iife
+
 /* eslint-env node */
+
 /*
     ESLint Rule Documentation Sites
         https://eslint.org/docs/rules/
@@ -10,25 +12,24 @@
         https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin
         https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
 */
-
 const path = require("path");
 
 module.exports = {
-  parser: "@typescript-eslint/parser", // Specifies the ESLint parser
+  parser: "@typescript-eslint/parser",
+  // Specifies the ESLint parser
   plugins: ["@typescript-eslint", "react"],
   env: {
     browser: true,
     jest: true,
   },
-  extends: [
-    "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
-    "prettier",
-  ],
+  extends: ["plugin:@typescript-eslint/recommended", "prettier", "plugin:storybook/recommended"],
   parserOptions: {
     project: path.resolve(__dirname, "./tsconfig.json"),
     tsconfigRootDir: __dirname,
-    ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
-    sourceType: "module", // Allows for the use of imports
+    ecmaVersion: 2018,
+    // Allows for the parsing of modern ECMAScript features
+    sourceType: "module",
+    // Allows for the use of imports
     ecmaFeatures: {
       jsx: true, // Allows for the parsing of JSX
     },
@@ -45,13 +46,13 @@ module.exports = {
     "react/no-deprecated": "off",
     "react/no-string-refs": "off",
     "react/require-render-return": "off",
-
     "react/jsx-filename-extension": [
       "warn",
       {
         extensions: [".jsx", ".tsx"],
       },
-    ], // also want to use with ".tsx"
+    ],
+    // also want to use with ".tsx"
     "react/prop-types": "off", // Is this incompatible with TS props type?
   },
   settings: {
