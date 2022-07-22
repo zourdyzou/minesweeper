@@ -1,4 +1,4 @@
-import { Legend, LegendProps } from "@components/Top/legend";
+import { Legend, LegendProps } from "@components/top-section/legend";
 import React, { FunctionComponent, PropsWithChildren } from "react";
 
 import styles from "./top.module.scss";
