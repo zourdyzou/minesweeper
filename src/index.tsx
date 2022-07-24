@@ -1,7 +1,7 @@
 import "@styles/styles.scss";
 import "normalize.css/normalize.css";
 
-import { App } from "@components/app";
+// import { App } from "@components/app";
 import { Top } from "@components/top-section";
 import React from "react";
 import { createRoot } from "react-dom/client";
