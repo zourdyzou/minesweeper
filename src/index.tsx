@@ -1,6 +1,7 @@
 import "@styles/styles.scss";
 import "normalize.css/normalize.css";
 
+import { ScoreBoard } from "@components/scoreboard";
 // import { App } from "@components/app";
 import { Top } from "@components/top-section";
 import React from "react";
@@ -16,9 +17,12 @@ root.render(
   <React.StrictMode>
     {/*<Segment writeKey={process.env.SEGMENT_WRITE_KEY as string}>*/}
     {/*<App />*/}
-    <Top feature="Flag for the bomb" firstAction="alt" secondAction="click">
-      Minesweeper
-    </Top>
+    <>
+      <Top feature="Flag" firstAction="ctrl" secondAction="click">
+        Minesweeper
+      </Top>
+      <ScoreBoard time="000" onReset={() => null} levels={["beginner", "intermediate", "expert"]} mines="010" />
+    </>
     {/*</Segment>*/}
   </React.StrictMode>
 );

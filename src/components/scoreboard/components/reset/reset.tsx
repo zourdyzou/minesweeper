@@ -21,6 +21,7 @@ export const ResetButton: FunctionComponent<ResetProps> = ({ onReset }) => {
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       onMouseLeave={onMouseUp}
+      // onMouseEnter={onMouseDown} not sure if we need this event.
       onClick={onReset}
     >
       {mouseDown ? "😯" : "🙂"}
