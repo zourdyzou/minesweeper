@@ -12,31 +12,25 @@ interface CellsType {
 export const CellComponent: FunctionComponent<CellsType> = ({ mouseDown, children }) => {
   switch (children) {
     case 0:
-      return (
-        <div
-          className={classNames(styles.closedFrame, styles.emptyFrame, {
-            // [styles.changedBorderColor]: !mouseDown,
-            // [styles.transparentClosedFrame]: mouseDown,
-          })}
-        />
-      );
+      return <EmptyFrame />;
     case 10:
-      return (
-        <div
-          className={classNames(styles.closedFrame, {
-            [styles.changedBorderColor]: !mouseDown,
-            [styles.transparentClosedFrame]: mouseDown,
-          })}
-        />
-      );
+      return <ClosedFrame mouseDown={mouseDown} />;
     default:
-      return (
-        <div
-          className={classNames(styles.closedFrame, {
-            [styles.changedBorderColor]: !mouseDown,
-            [styles.transparentClosedFrame]: mouseDown,
-          })}
-        />
-      );
+      return <ClosedFrame mouseDown={mouseDown} />;
   }
+};
+
+const ClosedFrame: FunctionComponent<{ mouseDown: boolean }> = ({ mouseDown }) => {
+  return (
+    <div
+      className={classNames(styles.closedFrame, {
+        [styles.changedBorderColor]: !mouseDown,
+        [styles.transparentClosedFrame]: mouseDown,
+      })}
+    />
+  );
+};
+
+const EmptyFrame: FunctionComponent = () => {
+  return <div className={classNames(styles.closedFrame, styles.emptyFrame)} />;
 };
