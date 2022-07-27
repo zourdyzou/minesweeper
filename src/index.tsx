@@ -1,6 +1,7 @@
 import "@styles/styles.scss";
 import "normalize.css/normalize.css";
 
+import { CellComponent } from "@components/grid/cell/cell";
 import { ScoreBoard } from "@components/scoreboard";
 // import { App } from "@components/app";
 import { Top } from "@components/top-section";
@@ -18,10 +19,11 @@ root.render(
     {/*<Segment writeKey={process.env.SEGMENT_WRITE_KEY as string}>*/}
     {/*<App />*/}
     <>
-      <Top feature="Flag" firstAction="ctrl" secondAction="click">
-        Minesweeper
-      </Top>
-      <ScoreBoard time="000" onReset={() => null} levels={["beginner", "intermediate", "expert"]} mines="010" />
+      {/*<Top feature="Flag" firstAction="ctrl" secondAction="click">*/}
+      {/*  Minesweeper*/}
+      {/*</Top>*/}
+      {/*<ScoreBoard time="000" onReset={() => null} levels={["beginner", "intermediate", "expert"]} mines="010" />*/}
+      <CellComponent mouseDown={false} children={0} />
     </>
     {/*</Segment>*/}
   </React.StrictMode>
