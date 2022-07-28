@@ -1,19 +1,19 @@
-import { Cell as CellType } from "@helpers/field";
+import { CellState, Cell as CellType } from "@helpers/field";
 import classNames from "classnames";
 import React, { FunctionComponent } from "react";
 
 import styles from "./cell.module.scss";
 
-interface CellsType {
+interface CellComponentType {
   mouseDown: boolean;
   children: CellType;
 }
 
-export const CellComponent: FunctionComponent<CellsType> = ({ mouseDown, children }) => {
+export const CellComponent: FunctionComponent<CellComponentType> = ({ mouseDown, children }) => {
   switch (children) {
-    case 0:
+    case CellState.empty:
       return <EmptyFrame />;
-    case 10:
+    case CellState.hidden:
       return <ClosedFrame mouseDown={mouseDown} />;
     default:
       return <ClosedFrame mouseDown={mouseDown} />;
