@@ -19,6 +19,19 @@ export const CellComponent: FunctionComponent<CellComponentType> = ({ mouseDown,
           <span className={styles.bombEntity} />
         </BombFrame>
       );
+    case CellState.flag:
+      return (
+        <ClosedFrame mouseDown={mouseDown}>
+          <FlagComponent />
+        </ClosedFrame>
+      );
+
+    case CellState.weakFlag:
+      return (
+        <ClosedFrame mouseDown={mouseDown}>
+          <WeakFlagComponent />
+        </ClosedFrame>
+      );
     case CellState.hidden:
       return <ClosedFrame mouseDown={mouseDown} />;
     default:
@@ -26,14 +39,16 @@ export const CellComponent: FunctionComponent<CellComponentType> = ({ mouseDown,
   }
 };
 
-const ClosedFrame: FunctionComponent<{ mouseDown: boolean }> = ({ mouseDown }) => {
+const ClosedFrame: FunctionComponent<PropsWithChildren<{ mouseDown: boolean }>> = ({ mouseDown, children }) => {
   return (
     <div
       className={classNames(styles.closedFrame, {
         [styles.changedBorderColor]: !mouseDown,
         [styles.transparentClosedFrame]: mouseDown,
       })}
-    />
+    >
+      {children ?? null}
+    </div>
   );
 };
 
@@ -43,4 +58,12 @@ const EmptyFrame: FunctionComponent = () => {
 
 const BombFrame: FunctionComponent<{ children: ReactNode }> = ({ children }) => {
   return <div className={classNames(styles.closedFrame, styles.emptyFrame, styles.bombFrame)}>{children}</div>;
+};
+
+const FlagComponent: FunctionComponent = () => {
+  return <div className={styles.flagComponent} />;
+};
+
+const WeakFlagComponent: FunctionComponent = () => {
+  return <div className={classNames(styles.flagComponent, styles.flagTransparent)} />;
 };

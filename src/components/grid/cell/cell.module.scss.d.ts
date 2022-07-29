@@ -7,6 +7,8 @@ declare namespace CellModuleScssNamespace {
     changedBorderColor: string;
     closedFrame: string;
     emptyFrame: string;
+    flagComponent: string;
+    flagTransparent: string;
     transparentClosedFrame: string;
   }
 }

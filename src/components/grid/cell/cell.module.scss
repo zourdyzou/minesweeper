@@ -42,3 +42,16 @@
   height: 1vw;
   background-color: #333;
 }
+
+.flagComponent {
+  width: 0px;
+  height: 0px;
+
+  border-top: 0.5vw solid transparent;
+  border-bottom: 0.5vw solid transparent;
+  border-left: 0.5vw solid #ec433c;
+}
+
+.flagTransparent {
+  border-left: 0.5vw solid #f19996;
+}
