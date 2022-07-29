@@ -1,0 +1,277 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing the CELL component Cell renders correct 1`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame revealedFrame"
+    data-testid="1,1"
+    role="cell"
+    style="color: rgba(0, 0, 0, 0);"
+  >
+    0
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Cell renders correct 2`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame revealedFrame"
+    data-testid="1,1"
+    role="cell"
+    style="color: rgb(42, 72, 236);"
+  >
+    1
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Cell renders correct 3`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame revealedFrame"
+    data-testid="1,1"
+    role="cell"
+    style="color: rgb(43, 177, 61);"
+  >
+    2
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Cell renders correct 4`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame revealedFrame"
+    data-testid="1,1"
+    role="cell"
+    style="color: rgb(236, 101, 97);"
+  >
+    3
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Cell renders correct 5`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame revealedFrame"
+    data-testid="1,1"
+    role="cell"
+    style="color: rgb(35, 61, 183);"
+  >
+    4
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Cell renders correct 6`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame revealedFrame"
+    data-testid="1,1"
+    role="cell"
+    style="color: rgb(166, 7, 15);"
+  >
+    5
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Cell renders correct 7`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame revealedFrame"
+    data-testid="1,1"
+    role="cell"
+    style="color: rgb(228, 0, 175);"
+  >
+    6
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Cell renders correct 8`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame revealedFrame"
+    data-testid="1,1"
+    role="cell"
+    style="color: rgb(144, 106, 2);"
+  >
+    7
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Cell renders correct 9`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame revealedFrame"
+    data-testid="1,1"
+    role="cell"
+    style="color: rgb(250, 7, 7);"
+  >
+    8
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Cell renders correct 10`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame revealedFrame bombFrame"
+    data-testid="1,1"
+    role="cell"
+  >
+    <div
+      class="bombEntity"
+      data-testid="bomb_1,1"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Cell renders correct 11`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame changedBorderColor"
+    data-testid="1,1"
+    role="cell"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Cell renders correct 12`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame changedBorderColor"
+    data-testid="1,1"
+    role="cell"
+  >
+    <div
+      class="flagComponent"
+      data-testid="flag_1,1"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Cell renders correct 13`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame changedBorderColor"
+    data-testid="1,1"
+    role="cell"
+  >
+    <div
+      class="flagComponent flagTransparent"
+      data-testid="weakFlag_1,1"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 1`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 2`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 3`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 4`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 5`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 6`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 7`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 8`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 9`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 10`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 11`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 12`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;
+
+exports[`Testing the CELL component Closed Frame renders correct 13`] = `
+<DocumentFragment>
+  <div
+    class="closedFrame transparentClosedFrame"
+  />
+</DocumentFragment>
+`;

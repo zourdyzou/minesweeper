@@ -1,7 +1,7 @@
 import "@styles/styles.scss";
 import "normalize.css/normalize.css";
 
-// import { CellComponent } from "@components/grid/cell/cell";
+import { CellComponent } from "@components/grid/cell/cell";
 import { ScoreBoard } from "@components/scoreboard";
 // import { App } from "@components/app";
 import { Top } from "@components/top-section";
@@ -23,7 +23,7 @@ root.render(
       {/*  Minesweeper*/}
       {/*</Top>*/}
       {/*<ScoreBoard time="000" onReset={() => null} levels={["beginner", "intermediate", "expert"]} mines="010" />*/}
-      {/*<CellComponent mouseDown={false} children={0} />*/}
+      <CellComponent coords={[1, 1]} children={10} onContextMenu={() => null} onClick={() => null} />
     </>
     {/*</Segment>*/}
   </React.StrictMode>

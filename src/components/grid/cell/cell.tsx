@@ -36,10 +36,9 @@ export interface ComponentsMapProps {
   role?: string;
 }
 
-/**
- * change the Partial util type
- */
-type RevealedProps = Partial<Pick<ComponentsMapProps, "onContextMenu" | "data-testid" | "role">>;
+type RevealedProps = Pick<ComponentsMapProps, "onContextMenu" | "data-testid" | "role">;
+
+type ExcludeMouseDown = Omit<ComponentsMapProps, "mouseDown">;
 
 export const isActiveCell = (cell: CellType): boolean =>
   [CellState.hidden, CellState.mark, CellState.weakMark].includes(cell);
@@ -78,11 +77,11 @@ export const CellComponent: FunctionComponent<CellProps> = ({ coords, children, 
     onMouseUp,
     onMouseLeave: onMouseUp,
     mouseDown,
-    "data-testid": `cells_${coords}`,
+    "data-testid": `${coords}`,
     role: "cell",
   };
 
-  return <ComponentsMap children={children} {...props} />;
+  return <ComponentsMap {...props}>{children}</ComponentsMap>;
 };
 
 export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ children, ...rest }) => {
@@ -95,8 +94,8 @@ export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ children,
   switch (children) {
     case CellState.bomb:
       return (
-        <BombFrame {...rest}>
-          <span className={styles.bombEntity} data-testid={`bomb_${rest["data-testid"]}`} />
+        <BombFrame {...nonActiveCellProps}>
+          <div className={styles.bombEntity} data-testid={`bomb_${rest["data-testid"]}`} />
         </BombFrame>
       );
     case CellState.mark:
@@ -119,14 +118,14 @@ export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ children,
   }
 };
 
-const ClosedFrame: FunctionComponent<PropsWithChildren<{ mouseDown?: boolean }>> = ({
+export const ClosedFrame: FunctionComponent<PropsWithChildren<{ mouseDown?: boolean }>> = ({
   mouseDown,
   children,
   ...restProps
 }) => {
   return (
     <div
-      {...restProps}
+      {...(restProps as ExcludeMouseDown)}
       className={classNames(styles.closedFrame, {
         [styles.changedBorderColor]: !mouseDown,
         [styles.transparentClosedFrame]: mouseDown,
@@ -137,10 +136,10 @@ const ClosedFrame: FunctionComponent<PropsWithChildren<{ mouseDown?: boolean }>>
   );
 };
 
-const RevealedFrame: FunctionComponent<PropsWithChildren<RevealedProps>> = ({ children, ...restProps }) => {
+export const RevealedFrame: FunctionComponent<PropsWithChildren<RevealedProps>> = ({ children, ...restProps }) => {
   return (
     <div
-      {...restProps}
+      {...(restProps as ExcludeMouseDown)}
       className={classNames(styles.closedFrame, styles.revealedFrame)}
       style={{
         color: colors[children as CellType] ?? transparent,
@@ -151,20 +150,25 @@ const RevealedFrame: FunctionComponent<PropsWithChildren<RevealedProps>> = ({ ch
   );
 };
 
-const BombFrame: FunctionComponent<{ children: ReactNode }> = ({ children, ...restProps }) => {
+export const BombFrame: FunctionComponent<{ children: ReactNode }> = ({ children, ...restProps }) => {
   return (
-    <div {...restProps} className={classNames(styles.closedFrame, styles.revealedFrame, styles.bombFrame)}>
+    <div
+      {...(restProps as ExcludeMouseDown)}
+      className={classNames(styles.closedFrame, styles.revealedFrame, styles.bombFrame)}
+    >
       {children}
     </div>
   );
 };
 
 const FlagComponent: FunctionComponent = ({ ...restProps }) => {
-  return <div {...restProps} className={styles.flagComponent} />;
+  return <div {...(restProps as ExcludeMouseDown)} className={styles.flagComponent} />;
 };
 
 const WeakFlagComponent: FunctionComponent = ({ ...restProps }) => {
-  return <div {...restProps} className={classNames(styles.flagComponent, styles.flagTransparent)} />;
+  return (
+    <div {...(restProps as ExcludeMouseDown)} className={classNames(styles.flagComponent, styles.flagTransparent)} />
+  );
 };
 
 const transparent = "rgba(0,0,0,0)";
