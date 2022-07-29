@@ -1,6 +1,6 @@
 import { CellState, Cell as CellType } from "@helpers/field";
 import classNames from "classnames";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, PropsWithChildren, ReactNode } from "react";
 
 import styles from "./cell.module.scss";
 
@@ -13,6 +13,12 @@ export const CellComponent: FunctionComponent<CellComponentType> = ({ mouseDown,
   switch (children) {
     case CellState.empty:
       return <EmptyFrame />;
+    case CellState.bomb:
+      return (
+        <BombFrame>
+          <span className={styles.bombEntity} />
+        </BombFrame>
+      );
     case CellState.hidden:
       return <ClosedFrame mouseDown={mouseDown} />;
     default:
@@ -33,4 +39,8 @@ const ClosedFrame: FunctionComponent<{ mouseDown: boolean }> = ({ mouseDown }) =
 
 const EmptyFrame: FunctionComponent = () => {
   return <div className={classNames(styles.closedFrame, styles.emptyFrame)} />;
+};
+
+const BombFrame: FunctionComponent<{ children: ReactNode }> = ({ children }) => {
+  return <div className={classNames(styles.closedFrame, styles.emptyFrame, styles.bombFrame)}>{children}</div>;
 };

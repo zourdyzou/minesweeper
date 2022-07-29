@@ -2,6 +2,8 @@
 // Please do not change this file!
 declare namespace CellModuleScssNamespace {
   export interface ICellModuleScss {
+    bombEntity: string;
+    bombFrame: string;
     changedBorderColor: string;
     closedFrame: string;
     emptyFrame: string;

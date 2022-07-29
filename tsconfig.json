@@ -21,7 +21,8 @@
       "@styles/*": ["src/styles/*"],
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
-      "@helpers/*": ["src/helpers/*"]
+      "@helpers/*": ["src/helpers/*"],
+      "~types/*": ["src/@types/*"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

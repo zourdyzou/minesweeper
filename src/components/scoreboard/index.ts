@@ -1,1 +1,1 @@
-export { ScoreBoard, ScoreboardProps } from "./scoreboard";
+export * from "./scoreboard";

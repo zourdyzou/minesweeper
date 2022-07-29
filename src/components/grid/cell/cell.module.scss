@@ -31,3 +31,14 @@
     filter: brightness(1);
   }
 }
+
+.bombFrame {
+  background-color: #ec433c;
+}
+
+.bombEntity {
+  border-radius: 50%;
+  width: 1vw;
+  height: 1vw;
+  background-color: #333;
+}
