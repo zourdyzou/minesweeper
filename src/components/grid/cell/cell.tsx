@@ -45,18 +45,29 @@ export interface ComponentsMapProps {
  */
 type RevealedProps = Partial<Pick<ComponentsMapProps, "onContextMenu" | "data-testid" | "role">>;
 
-export const CellComponent: FunctionComponent<CellComponentType & CellProps> = ({
-  mouseDown,
-  children,
-  coords,
-  ...restProps
-}) => {
-  const isActiveCell = [CellState.hidden, CellState.mark, CellState.weakMark].includes(children);
+export const isActiveCell = (cell: CellType): boolean =>
+  [CellState.hidden, CellState.mark, CellState.weakMark].includes(cell);
 
-  const onClickHandler = () => {
-    if (isActiveCell) {
-      restProps.onClick(coords);
-    }
+export const areEqual = (prevProps: CellProps, nextProps: CellProps): boolean => {
+  const areEqualCoords = prevProps.coords.filter((coord, index) => nextProps.coords[index] !== coord).length === 0;
+
+  return (
+    prevProps.children === nextProps.children &&
+    areEqualCoords &&
+    prevProps.onClick === nextProps.onClick &&
+    prevProps.onContextMenu === nextProps.onContextMenu
+  );
+};
+
+// export const CellComponent: FunctionComponent<CellProps> = React.memo(() => {
+//
+// }, )
+
+export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ mouseDown, children, ...rest }) => {
+  const nonActiveCellProps: RevealedProps = {
+    onContextMenu: rest.onContextMenu,
+    "data-testid": rest["data-testid"],
+    role: rest.role,
   };
 
   switch (children) {
@@ -82,7 +93,7 @@ export const CellComponent: FunctionComponent<CellComponentType & CellProps> = (
     case CellState.hidden:
       return <ClosedFrame mouseDown={mouseDown} />;
     default:
-      return <RevealedFrame>{children}</RevealedFrame>;
+      return <RevealedFrame {...nonActiveCellProps}>{children}</RevealedFrame>;
   }
 };
 
