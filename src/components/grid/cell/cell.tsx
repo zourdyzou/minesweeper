@@ -78,7 +78,7 @@ export const CellComponent: FunctionComponent<CellProps> = ({ coords, children, 
     onMouseUp,
     onMouseLeave: onMouseUp,
     mouseDown,
-    "data-testid": `${coords}`,
+    "data-testid": `cells_${coords}`,
     role: "cell",
   };
 
@@ -96,20 +96,20 @@ export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ children,
     case CellState.bomb:
       return (
         <BombFrame {...rest}>
-          <span className={styles.bombEntity} />
+          <span className={styles.bombEntity} data-testid={`bomb_${rest["data-testid"]}`} />
         </BombFrame>
       );
     case CellState.mark:
       return (
         <ClosedFrame {...rest}>
-          <FlagComponent />
+          <FlagComponent data-testid={`flag_${rest["data-testid"]}`} />
         </ClosedFrame>
       );
 
     case CellState.weakMark:
       return (
         <ClosedFrame {...rest}>
-          <WeakFlagComponent />
+          <WeakFlagComponent data-testid={`weakFlag_${rest["data-testid"]}`} />
         </ClosedFrame>
       );
     case CellState.hidden:
@@ -119,9 +119,14 @@ export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ children,
   }
 };
 
-const ClosedFrame: FunctionComponent<PropsWithChildren<{ mouseDown?: boolean }>> = ({ mouseDown, children }) => {
+const ClosedFrame: FunctionComponent<PropsWithChildren<{ mouseDown?: boolean }>> = ({
+  mouseDown,
+  children,
+  ...restProps
+}) => {
   return (
     <div
+      {...restProps}
       className={classNames(styles.closedFrame, {
         [styles.changedBorderColor]: !mouseDown,
         [styles.transparentClosedFrame]: mouseDown,
@@ -146,16 +151,20 @@ const RevealedFrame: FunctionComponent<PropsWithChildren<RevealedProps>> = ({ ch
   );
 };
 
-const BombFrame: FunctionComponent<{ children: ReactNode }> = ({ children }) => {
-  return <div className={classNames(styles.closedFrame, styles.revealedFrame, styles.bombFrame)}>{children}</div>;
+const BombFrame: FunctionComponent<{ children: ReactNode }> = ({ children, ...restProps }) => {
+  return (
+    <div {...restProps} className={classNames(styles.closedFrame, styles.revealedFrame, styles.bombFrame)}>
+      {children}
+    </div>
+  );
 };
 
-const FlagComponent: FunctionComponent = () => {
-  return <div className={styles.flagComponent} />;
+const FlagComponent: FunctionComponent = ({ ...restProps }) => {
+  return <div {...restProps} className={styles.flagComponent} />;
 };
 
-const WeakFlagComponent: FunctionComponent = () => {
-  return <div className={classNames(styles.flagComponent, styles.flagTransparent)} />;
+const WeakFlagComponent: FunctionComponent = ({ ...restProps }) => {
+  return <div {...restProps} className={classNames(styles.flagComponent, styles.flagTransparent)} />;
 };
 
 const transparent = "rgba(0,0,0,0)";
