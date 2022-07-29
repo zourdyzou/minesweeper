@@ -1,4 +1,4 @@
-import { CellState, Cell as CellType } from "@helpers/field";
+import { CellState, Cell as CellType, Coordinates } from "@helpers/field";
 import classNames from "classnames";
 import React, { FunctionComponent, PropsWithChildren, ReactNode } from "react";
 
@@ -7,6 +7,25 @@ import styles from "./cell.module.scss";
 interface CellComponentType {
   mouseDown: boolean;
   children: CellType;
+}
+
+export interface CellProps {
+  /**
+   * Cell status based on the CellType
+   */
+  children: CellType;
+  /**
+   * Cell coordinates
+   */
+  coords: Coordinates;
+  /**
+   * onClick by cell handler
+   */
+  onClick: (coords: Coordinates) => void;
+  /**
+   * onContextMenu by cell handler
+   */
+  onContextMenu: (coords: Coordinates) => void;
 }
 
 export interface ComponentsMapProps {
@@ -26,10 +45,21 @@ export interface ComponentsMapProps {
  */
 type RevealedProps = Partial<Pick<ComponentsMapProps, "onContextMenu" | "data-testid" | "role">>;
 
-export const CellComponent: FunctionComponent<CellComponentType> = ({ mouseDown, children }) => {
+export const CellComponent: FunctionComponent<CellComponentType & CellProps> = ({
+  mouseDown,
+  children,
+  coords,
+  ...restProps
+}) => {
+  const isActiveCell = [CellState.hidden, CellState.mark, CellState.weakMark].includes(children);
+
+  const onClickHandler = () => {
+    if (isActiveCell) {
+      restProps.onClick(coords);
+    }
+  };
+
   switch (children) {
-    case CellState.empty:
-      return <RevealedFrame>{children}</RevealedFrame>;
     case CellState.bomb:
       return (
         <BombFrame>
@@ -52,7 +82,7 @@ export const CellComponent: FunctionComponent<CellComponentType> = ({ mouseDown,
     case CellState.hidden:
       return <ClosedFrame mouseDown={mouseDown} />;
     default:
-      return <ClosedFrame mouseDown={mouseDown} />;
+      return <RevealedFrame>{children}</RevealedFrame>;
   }
 };
 
