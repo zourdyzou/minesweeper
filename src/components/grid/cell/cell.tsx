@@ -1,13 +1,9 @@
 import { CellState, Cell as CellType, Coordinates } from "@helpers/field";
+import { useMouseDown } from "~hooks/useMouseDown";
 import classNames from "classnames";
 import React, { FunctionComponent, PropsWithChildren, ReactNode } from "react";
 
 import styles from "./cell.module.scss";
-
-interface CellComponentType {
-  mouseDown: boolean;
-  children: CellType;
-}
 
 export interface CellProps {
   /**
@@ -29,15 +25,15 @@ export interface CellProps {
 }
 
 export interface ComponentsMapProps {
-  children: CellType;
-  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
-  onContextMenu: (event: React.MouseEvent<HTMLDivElement>) => void;
-  onMouseDown: () => void;
-  onMouseUp: () => void;
-  onMouseLeave: () => void;
-  mouseDown: boolean;
+  children?: CellType;
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onContextMenu?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onMouseDown?: () => void;
+  onMouseUp?: () => void;
+  onMouseLeave?: () => void;
+  mouseDown?: boolean;
   "data-testid"?: string;
-  role: string;
+  role?: string;
 }
 
 /**
@@ -59,11 +55,37 @@ export const areEqual = (prevProps: CellProps, nextProps: CellProps): boolean =>
   );
 };
 
-// export const CellComponent: FunctionComponent<CellProps> = React.memo(() => {
-//
-// }, )
+export const CellComponent: FunctionComponent<CellProps> = ({ coords, children, ...restProps }) => {
+  const [mouseDown, onMouseDown, onMouseUp] = useMouseDown();
 
-export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ mouseDown, children, ...rest }) => {
+  const onClick = () => restProps.onClick(coords);
+
+  const onContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
+    /**
+     * Prevent context menu by default
+     */
+    event.preventDefault();
+
+    if (isActiveCell(children)) {
+      restProps.onContextMenu(coords);
+    }
+  };
+
+  const props = {
+    onClick,
+    onContextMenu,
+    onMouseDown,
+    onMouseUp,
+    onMouseLeave: onMouseUp,
+    mouseDown,
+    "data-testid": `${coords}`,
+    role: "cell",
+  };
+
+  return <ComponentsMap children={children} {...props} />;
+};
+
+export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ children, ...rest }) => {
   const nonActiveCellProps: RevealedProps = {
     onContextMenu: rest.onContextMenu,
     "data-testid": rest["data-testid"],
@@ -73,31 +95,31 @@ export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ mouseDown
   switch (children) {
     case CellState.bomb:
       return (
-        <BombFrame>
+        <BombFrame {...rest}>
           <span className={styles.bombEntity} />
         </BombFrame>
       );
     case CellState.mark:
       return (
-        <ClosedFrame mouseDown={mouseDown}>
+        <ClosedFrame {...rest}>
           <FlagComponent />
         </ClosedFrame>
       );
 
     case CellState.weakMark:
       return (
-        <ClosedFrame mouseDown={mouseDown}>
+        <ClosedFrame {...rest}>
           <WeakFlagComponent />
         </ClosedFrame>
       );
     case CellState.hidden:
-      return <ClosedFrame mouseDown={mouseDown} />;
+      return <ClosedFrame {...rest} />;
     default:
       return <RevealedFrame {...nonActiveCellProps}>{children}</RevealedFrame>;
   }
 };
 
-const ClosedFrame: FunctionComponent<PropsWithChildren<{ mouseDown: boolean }>> = ({ mouseDown, children }) => {
+const ClosedFrame: FunctionComponent<PropsWithChildren<{ mouseDown?: boolean }>> = ({ mouseDown, children }) => {
   return (
     <div
       className={classNames(styles.closedFrame, {
