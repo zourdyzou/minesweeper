@@ -6,9 +6,9 @@ declare namespace CellModuleScssNamespace {
     bombFrame: string;
     changedBorderColor: string;
     closedFrame: string;
-    emptyFrame: string;
     flagComponent: string;
     flagTransparent: string;
+    revealedFrame: string;
     transparentClosedFrame: string;
   }
 }
