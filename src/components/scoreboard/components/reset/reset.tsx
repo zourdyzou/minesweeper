@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useState } from "react";
+import { useMouseDown } from "~hooks/useMouseDown";
+import React, { FunctionComponent } from "react";
 
 import styles from "./reset.module.scss";
 
@@ -10,10 +11,7 @@ export interface ResetProps {
 }
 
 export const ResetButton: FunctionComponent<ResetProps> = ({ onReset }) => {
-  const [mouseDown, setMouseDown] = useState(false);
-
-  const onMouseDown = () => setMouseDown(true);
-  const onMouseUp = () => setMouseDown(false);
+  const [mouseDown, onMouseDown, onMouseUp] = useMouseDown();
 
   return (
     <button
