@@ -81,7 +81,7 @@ export const CellComponent: FunctionComponent<CellProps> = ({ coords, children, 
     role: "cell",
   };
 
-  return <ComponentsMap {...props}>{children}</ComponentsMap>;
+  return <ComponentsMap children={children} {...props} />;
 };
 
 export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ children, ...rest }) => {

@@ -8,14 +8,14 @@ describe("Reset button test", function () {
   it("should render elements with default state", function () {
     render(<ResetWithDummyHandlerOnReset />);
 
-    expect(screen.getByText("🙂")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /🙂/i })).toBeInTheDocument();
   });
 
   it("onReset handler should be called", function () {
     const onReset = jest.fn();
 
     render(<ResetButton onReset={onReset} />);
-    fireEvent.click(screen.getByText("🙂"));
+    fireEvent.click(screen.getByRole("button", { name: /🙂/i }));
 
     expect(onReset).toBeCalled();
   });
@@ -23,20 +23,20 @@ describe("Reset button test", function () {
   it("should change state when onMouseDown and onMouseUp events happened", function () {
     render(<ResetWithDummyHandlerOnReset />);
 
-    fireEvent.mouseDown(screen.getByText("🙂"));
-    expect(screen.getByText("😯")).toBeInTheDocument();
+    fireEvent.mouseDown(screen.getByRole("button", { name: /🙂/i }));
+    expect(screen.getByRole("button", { name: /😯/i })).toBeInTheDocument();
 
-    fireEvent.mouseUp(screen.getByText("😯"));
-    expect(screen.getByText("🙂")).toBeInTheDocument();
+    fireEvent.mouseUp(screen.getByRole("button", { name: /😯/i }));
+    expect(screen.getByRole("button", { name: /🙂/i })).toBeInTheDocument();
   });
 
   it("should change state when onMouseDown and onMouseLeave events happened", function () {
     render(<ResetWithDummyHandlerOnReset />);
 
-    fireEvent.mouseDown(screen.getByText("🙂"));
-    expect(screen.getByText("😯")).toBeInTheDocument();
+    fireEvent.mouseDown(screen.getByRole("button", { name: /🙂/i }));
+    expect(screen.getByRole("button", { name: /😯/i })).toBeInTheDocument();
 
-    fireEvent.mouseLeave(screen.getByText("😯"));
-    expect(screen.getByText("🙂")).toBeInTheDocument();
+    fireEvent.mouseLeave(screen.getByRole("button", { name: /😯/i }));
+    expect(screen.getByRole("button", { name: /🙂/i })).toBeInTheDocument();
   });
 });
