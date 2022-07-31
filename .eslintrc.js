@@ -52,8 +52,6 @@ module.exports = {
         extensions: [".jsx", ".tsx"],
       },
     ],
-    // also want to use with ".tsx"
-    "react/prop-types": "off", // Is this incompatible with TS props type?
   },
   settings: {
     react: {
