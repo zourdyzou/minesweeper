@@ -2,7 +2,6 @@ import "@styles/styles.scss";
 import "normalize.css/normalize.css";
 
 import { GridComponent } from "@components/grid";
-import { Field } from "@helpers/field";
 import { MockFieldData } from "@helpers/mockData";
 import React from "react";
 import { createRoot } from "react-dom/client";
