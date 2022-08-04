@@ -77,7 +77,7 @@ export const CellComponent: FunctionComponent<CellProps> = ({ coords, children, 
     onMouseUp,
     onMouseLeave: onMouseUp,
     mouseDown,
-    "data-testid": `${coords}`,
+    "data-testid": `stone_${coords}`,
     role: "cell",
   };
 
