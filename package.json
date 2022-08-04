@@ -16,7 +16,9 @@
     "postinstall": "npm run update-hooks",
     "docs:generate": "typedoc",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix --ext .ts,.tsx ."
   },
   "directories": {
     "example": "examples"

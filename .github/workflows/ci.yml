@@ -1,0 +1,49 @@
+name: Continous Integration
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  test_and_build:
+    # The type of runner that the job will run on
+    name: Test and build the project
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+            node-version-file: '.nvmrc'
+
+      # Install deps
+      - name: Install npm deps
+        run: npm i
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      # Run project test
+      - name: Tests
+        run: npm run test
+
+      # Run project linter
+      - name: Run ESLint
+        uses: wearerequired/lint-action@v2.0.1
+        with:
+          eslint: true
+          eslint_extensions: "ts,tsx"
+
+      - name: Fix Linting
+        run: npm run lint:fix
+
+      # Run build
+      - name: Build
+        run: npm run build
