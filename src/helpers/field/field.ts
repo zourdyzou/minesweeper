@@ -59,9 +59,6 @@ export const fieldGenerator = (size: number, probability: number): Field => {
   // cells filled with bombs
   let restCellsWithBombs = unprocessedCells * probability;
 
-  /**
-   *  y = rows, x = columns
-   */
   // Stryker disable next-line EqualityOperator
   for (let y = 0; y < size; y++) {
     for (let x = 0; x < size; x++) {
