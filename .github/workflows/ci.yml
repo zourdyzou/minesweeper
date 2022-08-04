@@ -24,11 +24,8 @@ jobs:
             node-version-file: '.nvmrc'
 
       # Install deps
-      - name: Install npm deps
+      - name: Install Node deps
         run: npm i
-
-      - name: Install Node.js dependencies
-        run: npm ci
 
       # Run project test
       - name: Tests
