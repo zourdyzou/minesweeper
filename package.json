@@ -18,7 +18,8 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix --ext .ts,.tsx ."
+    "lint:fix": "eslint --fix --ext .ts,.tsx .",
+    "coverage:push": "codecov"
   },
   "directories": {
     "example": "examples"
@@ -159,6 +160,7 @@
     "chalk": "^5.0.1",
     "chalk-table": "^1.0.2",
     "classnames": "^2.3.1",
+    "codecov": "^3.8.3",
     "dotenv-webpack": "^7.1.1",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
