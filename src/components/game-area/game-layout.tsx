@@ -13,11 +13,11 @@ export interface Props {
   children: React.ReactNode;
 }
 
-const WrapperContainer: FunctionComponent<PropsWithChildren> = ({ children }) => (
+export const WrapperContainer: FunctionComponent<PropsWithChildren> = ({ children }) => (
   <div className={styles.wrapperContainer}>{children}</div>
 );
 
-const GameArea: FunctionComponent<PropsWithChildren> = ({ children }) => (
+export const GameArea: FunctionComponent<PropsWithChildren> = ({ children }) => (
   <div className={styles.gameArea}>{children}</div>
 );
 
