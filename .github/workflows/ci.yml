@@ -63,5 +63,8 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
+      - name: Install Node deps
+        run: npm i
+
       - name: Push the coverage
         run: npm run coverage:push -- --token=${{ secrets.CODECOV_TOKEN }}
