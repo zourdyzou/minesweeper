@@ -46,3 +46,25 @@ jobs:
       # Run build
       - name: Build
         run: npm run build
+
+  code_coverage_check:
+    # The type of runner that the job will run on
+    name: Check the code coverage quality
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install Node deps
+        run: npm i
+
+      - name: Push the coverage
+        run: npm run coverage:push -- --token=${{ secrets.CODECOV_TOKEN }}
