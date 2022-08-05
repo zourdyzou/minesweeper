@@ -12,12 +12,15 @@ describe("Level component test case", function () {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("should Select level behaviour", function () {
+  it("should Select level behaviour", async function () {
     const onChange = jest.fn();
     const levelData = ["beginner", "intermediate", "expert"];
     render(<Level levelData={levelData} onChange={onChange} />);
 
-    userEvent.selectOptions(screen.getByRole("select-component"), "intermediate");
+    await userEvent.selectOptions(screen.getByRole("select-component"), "intermediate");
     expect(screen.getByRole("option", { name: "intermediate" })).toBeEnabled();
+
+    await Promise.resolve();
+    expect(onChange).toHaveBeenCalled();
   });
 });
