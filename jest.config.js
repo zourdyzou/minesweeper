@@ -9,10 +9,10 @@ module.exports = {
   testMatch: ["<rootDir>/src/**/?(*.)+(spec|test).[jt]s?(x)"],
   coverageThreshold: {
     global: {
-      branches: 80,
+      branches: 60,
       functions: 50,
       lines: 50,
-      statements: 80,
+      statements: 60,
     },
   },
   errorOnDeprecated: false,

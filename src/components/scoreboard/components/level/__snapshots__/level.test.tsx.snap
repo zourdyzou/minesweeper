@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Level component test case should render level correctly 1`] = `
+<DocumentFragment>
+  <select
+    class="selectLevel"
+    role="select-component"
+  >
+    <option
+      class="optionLevel"
+    >
+      beginner
+    </option>
+    <option
+      class="optionLevel"
+    >
+      intermediate
+    </option>
+    <option
+      class="optionLevel"
+    >
+      expert
+    </option>
+  </select>
+</DocumentFragment>
+`;
