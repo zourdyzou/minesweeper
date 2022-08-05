@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { ChangeEvent, FunctionComponent } from "react";
 
 import { Counter, Level, ResetButton } from "./components";
 import styles from "./scoreboard.module.scss";
@@ -20,14 +20,20 @@ export interface ScoreboardProps {
    * Bombs in the field
    */
   mines: string;
+  /**
+   * Action handler when select new lvl
+   */
+  onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export const ScoreBoard: FunctionComponent<ScoreboardProps> = ({ time, mines, onReset, levels }) => {
+export const ScoreBoard: FunctionComponent<ScoreboardProps> = ({ time, mines, onReset, levels, onChange }) => {
   return (
     <div className={styles.wrapperScoreboard}>
       <Counter itemNumber={time} />
-      <Level levelData={levels} />
-      <ResetButton onReset={onReset} />
+      <div>
+        <Level onChange={onChange} levelData={levels} />
+        <ResetButton onReset={onReset} />
+      </div>
       <Counter itemNumber={mines} />
     </div>
   );
