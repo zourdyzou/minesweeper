@@ -1,0 +1,16 @@
+.wrapperContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.gameArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 6px solid #e3e3e3;
+  background-color: #e3e3e3;
+}
