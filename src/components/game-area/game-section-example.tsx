@@ -18,7 +18,7 @@ export const GameSectionExample: FunctionComponent = () => {
           mines="000"
           levels={["beginner", "intermediate", "expert"]}
           onReset={() => null}
-          onChange={() => null}
+          onChangeLevel={() => null}
         />
         <GameOver onClick={() => null} isWin={true} />
         <GridComponent children={fieldGenerator(10, 0.5) as Field} onClick={() => null} onContextMenu={() => null} />

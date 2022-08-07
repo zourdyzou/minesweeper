@@ -17,21 +17,32 @@ export interface ScoreboardProps {
    */
   onReset: () => void;
   /**
+   * Default selected level
+   */
+  defaultLevel?: string;
+  /**
    * Bombs in the field
    */
   mines: string;
   /**
    * Action handler when select new lvl
    */
-  onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
+  onChangeLevel: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export const ScoreBoard: FunctionComponent<ScoreboardProps> = ({ time, mines, onReset, levels, onChange }) => {
+export const ScoreBoard: FunctionComponent<ScoreboardProps> = ({
+  time,
+  mines,
+  onReset,
+  levels,
+  onChangeLevel,
+  defaultLevel,
+}) => {
   return (
     <div className={styles.wrapperScoreboard}>
       <Counter itemNumber={time} />
       <div>
-        <Level onChange={onChange} levelData={levels} />
+        <Level onChange={onChangeLevel} levelData={levels} value={defaultLevel} />
         <ResetButton onReset={onReset} />
       </div>
       <Counter itemNumber={mines} />
