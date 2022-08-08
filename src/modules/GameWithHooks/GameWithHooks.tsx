@@ -6,7 +6,7 @@ import { Top } from "@components/top-section";
 import { openCell } from "@helpers/cells/cells-manipulator";
 import { CellState, Coordinates, Field, fieldGenerator, generateFieldWithDefaultState } from "@helpers/field";
 import { GameLevels, GameSettings, LevelNames } from "@modules/GameSettings";
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useMemo, useState } from "react";
 
 export const GameWithHooks: FunctionComponent = () => {
   const [level, setLevel] = useState<LevelNames>("beginner");
@@ -14,7 +14,7 @@ export const GameWithHooks: FunctionComponent = () => {
 
   const [playerField, setPlayerField] = useState<Field>(generateFieldWithDefaultState(size, CellState.hidden));
 
-  const gameField = fieldGenerator(size, bombs / (size * size));
+  const gameField = useMemo(() => fieldGenerator(size, bombs / (size * size)), [size, bombs]);
 
   const onClickHandler = (coords: Coordinates) => {
     const newPlayerField = openCell(coords, playerField, gameField);

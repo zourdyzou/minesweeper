@@ -54,7 +54,7 @@ export const areEqual = (prevProps: CellProps, nextProps: CellProps): boolean =>
   );
 };
 
-export const CellComponent: FunctionComponent<CellProps> = ({ coords, children, ...restProps }) => {
+export const CellComponent: FunctionComponent<CellProps> = React.memo(({ coords, children, ...restProps }) => {
   const [mouseDown, onMouseDown, onMouseUp] = useMouseDown();
 
   const onClick = () => restProps.onClick(coords);
@@ -82,7 +82,7 @@ export const CellComponent: FunctionComponent<CellProps> = ({ coords, children, 
   };
 
   return <ComponentsMap children={children} {...props} />;
-};
+}, areEqual);
 
 export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ children, ...rest }) => {
   const nonActiveCellProps: RevealedProps = {
