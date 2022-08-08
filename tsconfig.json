@@ -24,7 +24,7 @@
       "@helpers/*": ["src/helpers/*"],
       "~types/*": ["src/@types/*"],
       "~hooks/*": ["src/hooks/*"],
-      "@modules": ["src/modules/*"]
+      "@modules/*": ["src/modules/*"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

@@ -1,7 +1,7 @@
 import "@styles/styles.scss";
 import "normalize.css/normalize.css";
 
-import { GameWithHooks } from "@src/modules/GameWithHooks";
+import { GameWithHooks } from "@modules/GameWithHooks";
 import React from "react";
 import { createRoot } from "react-dom/client";
 

@@ -4,7 +4,7 @@ import { GridComponent } from "@components/grid";
 import { ScoreBoard } from "@components/scoreboard";
 import { Top } from "@components/top-section";
 import { CellState, generateFieldWithDefaultState } from "@helpers/field";
-import { GameLevels, GameSettings, LevelNames } from "@src/modules/GameSettings";
+import { GameLevels, GameSettings, LevelNames } from "@modules/GameSettings";
 import React, { FunctionComponent, useState } from "react";
 
 export const GameWithHooks: FunctionComponent = () => {
