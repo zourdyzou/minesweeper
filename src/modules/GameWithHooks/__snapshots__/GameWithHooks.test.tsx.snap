@@ -71,13 +71,8 @@ exports[`GameWithHooks test cases Render component behaviour should render game 
         <div
           class="parentCounter"
         >
-          000
+          10
         </div>
-      </div>
-      <div
-        class="gameOverComponent"
-      >
-        😎
       </div>
       <div
         class="containerWrapper"
