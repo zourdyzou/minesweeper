@@ -12,14 +12,21 @@ export const GameWithHooks: FunctionComponent = () => {
   const [level, setLevel] = useState<LevelNames>("beginner");
   const [size, bombs] = GameSettings[level];
 
+  const [isGameOver, setIsGameOver] = useState(false);
+  const [isWin, setIsWin] = useState(false);
+
   const [playerField, setPlayerField] = useState<Field>(generateFieldWithDefaultState(size, CellState.hidden));
 
   const [gameField, setGameField] = useState<Field>(fieldGenerator(size, bombs / (size * size)));
 
   const onClickHandler = (coords: Coordinates) => {
-    const newPlayerField = openCell(coords, playerField, gameField);
-
-    setPlayerField([...newPlayerField]);
+    try {
+      const newPlayerField = openCell(coords, playerField, gameField);
+      setPlayerField([...newPlayerField]);
+    } catch (e) {
+      setPlayerField([...gameField]);
+      setIsGameOver(true);
+    }
   };
 
   const resetHandler = ([size, bombs]: [number, number]) => {
@@ -28,6 +35,8 @@ export const GameWithHooks: FunctionComponent = () => {
 
     setGameField([...newGameField]);
     setPlayerField([...newPlayerField]);
+    setIsGameOver(false);
+    setIsWin(false);
   };
 
   const onChangeLevelHandler = ({ target: { value: level } }: React.ChangeEvent<HTMLSelectElement>) => {
@@ -46,12 +55,12 @@ export const GameWithHooks: FunctionComponent = () => {
       <GameArea>
         <ScoreBoard
           time="000"
-          mines="000"
+          mines={String(bombs)}
           levels={GameLevels as unknown as string[]}
           onReset={onResetHandler}
           onChangeLevel={onChangeLevelHandler}
         />
-        <GameOver onClick={() => null} isWin={true} />
+        {isGameOver && <GameOver onClick={onResetHandler} isWin={isWin} />}
         <GridComponent children={playerField} onClick={onClickHandler} onContextMenu={() => null} />
       </GameArea>
     </WrapperContainer>
