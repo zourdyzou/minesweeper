@@ -7,6 +7,7 @@ interface ReturnType {
   level: LevelNames;
   isGameOver: boolean;
   isWin: boolean;
+  gameField: Field;
   settings: [number, number];
   playerField: Field;
   onClickHandler: (coords: Coordinates) => void;
@@ -57,6 +58,7 @@ export const useGame = (): ReturnType => {
     level,
     isGameOver,
     isWin,
+    gameField,
     settings: [size, bombs],
     playerField,
     onClickHandler,
