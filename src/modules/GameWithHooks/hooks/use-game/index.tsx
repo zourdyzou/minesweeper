@@ -1,5 +1,6 @@
 import { openCell } from "@helpers/cells/cells-manipulator";
 import { CellState, Coordinates, Field, fieldGenerator, generateFieldWithDefaultState } from "@helpers/field";
+import { setFlag } from "@helpers/set-flag";
 import { GameSettings, LevelNames } from "@modules/GameSettings";
 import React, { useState } from "react";
 
@@ -10,6 +11,7 @@ interface ReturnType {
   gameField: Field;
   settings: [number, number];
   playerField: Field;
+  onContextMenuHandler: (coords: Coordinates) => void;
   onClickHandler: (coords: Coordinates) => void;
   onChangeLevelHandler: (level: LevelNames) => void;
   onResetHandler: () => void;
@@ -52,6 +54,11 @@ export const useGame = (): ReturnType => {
     resetHandler(newSettings);
   };
 
+  const onContextMenuHandler = (coords: Coordinates) => {
+    const newPlayerField = setFlag(coords, playerField, gameField);
+    setPlayerField([...newPlayerField]);
+  };
+
   const onResetHandler = () => resetHandler([size, bombs]);
 
   return {
@@ -62,6 +69,7 @@ export const useGame = (): ReturnType => {
     settings: [size, bombs],
     playerField,
     onClickHandler,
+    onContextMenuHandler,
     onChangeLevelHandler,
     onResetHandler,
   };
