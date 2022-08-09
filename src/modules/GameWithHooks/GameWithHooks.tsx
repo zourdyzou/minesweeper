@@ -6,7 +6,7 @@ import { Top } from "@components/top-section";
 import { openCell } from "@helpers/cells/cells-manipulator";
 import { CellState, Coordinates, Field, fieldGenerator, generateFieldWithDefaultState } from "@helpers/field";
 import { GameLevels, GameSettings, LevelNames } from "@modules/GameSettings";
-import React, { FunctionComponent, useMemo, useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 
 export const GameWithHooks: FunctionComponent = () => {
   const [level, setLevel] = useState<LevelNames>("beginner");
@@ -14,7 +14,7 @@ export const GameWithHooks: FunctionComponent = () => {
 
   const [playerField, setPlayerField] = useState<Field>(generateFieldWithDefaultState(size, CellState.hidden));
 
-  const gameField = useMemo(() => fieldGenerator(size, bombs / (size * size)), [size, bombs]);
+  const [gameField, setGameField] = useState<Field>(fieldGenerator(size, bombs / (size * size)));
 
   const onClickHandler = (coords: Coordinates) => {
     const newPlayerField = openCell(coords, playerField, gameField);
@@ -22,13 +22,21 @@ export const GameWithHooks: FunctionComponent = () => {
     setPlayerField([...newPlayerField]);
   };
 
+  const resetHandler = ([size, bombs]: [number, number]) => {
+    const newGameField = fieldGenerator(size, bombs / (size * size));
+    const newPlayerField = generateFieldWithDefaultState(size, CellState.hidden);
+
+    setGameField([...newGameField]);
+    setPlayerField([...newPlayerField]);
+  };
+
   const onChangeLevelHandler = ({ target: { value: level } }: React.ChangeEvent<HTMLSelectElement>) => {
     setLevel(level as LevelNames);
-    const [newSize] = GameSettings[level as LevelNames];
-
-    const resetNewPlayerField = generateFieldWithDefaultState(newSize, CellState.hidden);
-    setPlayerField([...resetNewPlayerField]);
+    const newSettings = GameSettings[level as LevelNames];
+    resetHandler(newSettings);
   };
+
+  const onResetHandler = () => resetHandler([size, bombs]);
 
   return (
     <WrapperContainer>
@@ -40,7 +48,7 @@ export const GameWithHooks: FunctionComponent = () => {
           time="000"
           mines="000"
           levels={GameLevels as unknown as string[]}
-          onReset={() => null}
+          onReset={onResetHandler}
           onChangeLevel={onChangeLevelHandler}
         />
         <GameOver onClick={() => null} isWin={true} />

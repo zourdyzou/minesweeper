@@ -67,12 +67,8 @@ export const openCell = (coords: Coordinates, playerField: Field, gameField: Fie
         const scopedGameCell = gameField[y][x];
         const scopedPlayerCell = playerField[y][x];
 
-        if (scopedGameCell === empty && scopedPlayerCell === hidden) {
+        if (scopedPlayerCell === hidden && scopedGameCell !== bomb) {
           playerField = openCell([y, x], playerField, gameField);
-        }
-
-        if (scopedGameCell < bomb) {
-          playerField[y][x] = scopedGameCell;
         }
       }
     }
