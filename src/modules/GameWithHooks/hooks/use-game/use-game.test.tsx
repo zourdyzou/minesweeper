@@ -1,4 +1,4 @@
-import { Field } from "@helpers/field";
+import { CellState, Field } from "@helpers/field";
 import { GameLevels, GameSettings } from "@modules/GameSettings";
 import { useGame } from "@modules/GameWithHooks/hooks/use-game/index";
 import { act, renderHook } from "@testing-library/react";
@@ -34,5 +34,15 @@ describe("useGame test cases", function () {
     act(() => onChangeLevelHandler(expert));
     const { playerField: expertPlayerField } = result.current;
     expect(expertPlayerField).toHaveLength(22);
+  });
+
+  it("should handler contextMenu handler", function () {
+    const { result } = renderHook(useGame);
+
+    const { onContextMenuHandler, playerField: newPlayerField } = result.current;
+
+    act(() => onContextMenuHandler([0, 0]));
+
+    expect(flatWithFilter(newPlayerField, CellState.mark)).toHaveLength(1);
   });
 });
