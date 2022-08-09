@@ -3,6 +3,7 @@
 exports[`Testing the CELL component Cell renders correct 1`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame revealedFrame"
     data-testid="1,1"
     role="cell"
@@ -16,6 +17,7 @@ exports[`Testing the CELL component Cell renders correct 1`] = `
 exports[`Testing the CELL component Cell renders correct 2`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame revealedFrame"
     data-testid="1,1"
     role="cell"
@@ -29,6 +31,7 @@ exports[`Testing the CELL component Cell renders correct 2`] = `
 exports[`Testing the CELL component Cell renders correct 3`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame revealedFrame"
     data-testid="1,1"
     role="cell"
@@ -42,6 +45,7 @@ exports[`Testing the CELL component Cell renders correct 3`] = `
 exports[`Testing the CELL component Cell renders correct 4`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame revealedFrame"
     data-testid="1,1"
     role="cell"
@@ -55,6 +59,7 @@ exports[`Testing the CELL component Cell renders correct 4`] = `
 exports[`Testing the CELL component Cell renders correct 5`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame revealedFrame"
     data-testid="1,1"
     role="cell"
@@ -68,6 +73,7 @@ exports[`Testing the CELL component Cell renders correct 5`] = `
 exports[`Testing the CELL component Cell renders correct 6`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame revealedFrame"
     data-testid="1,1"
     role="cell"
@@ -81,6 +87,7 @@ exports[`Testing the CELL component Cell renders correct 6`] = `
 exports[`Testing the CELL component Cell renders correct 7`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame revealedFrame"
     data-testid="1,1"
     role="cell"
@@ -94,6 +101,7 @@ exports[`Testing the CELL component Cell renders correct 7`] = `
 exports[`Testing the CELL component Cell renders correct 8`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame revealedFrame"
     data-testid="1,1"
     role="cell"
@@ -107,6 +115,7 @@ exports[`Testing the CELL component Cell renders correct 8`] = `
 exports[`Testing the CELL component Cell renders correct 9`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame revealedFrame"
     data-testid="1,1"
     role="cell"
@@ -120,13 +129,15 @@ exports[`Testing the CELL component Cell renders correct 9`] = `
 exports[`Testing the CELL component Cell renders correct 10`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame revealedFrame bombFrame"
     data-testid="1,1"
     role="cell"
   >
     <div
+      aria-label="1,1"
       class="bombEntity"
-      data-testid="bomb_1,1"
+      data-testid="1,1"
     />
   </div>
 </DocumentFragment>
@@ -135,6 +146,7 @@ exports[`Testing the CELL component Cell renders correct 10`] = `
 exports[`Testing the CELL component Cell renders correct 11`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame changedBorderColor"
     data-testid="1,1"
     role="cell"
@@ -145,13 +157,15 @@ exports[`Testing the CELL component Cell renders correct 11`] = `
 exports[`Testing the CELL component Cell renders correct 12`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame changedBorderColor"
     data-testid="1,1"
     role="cell"
   >
     <div
+      aria-label="1,1"
       class="flagComponent"
-      data-testid="flag_1,1"
+      data-testid="1,1"
     />
   </div>
 </DocumentFragment>
@@ -160,13 +174,15 @@ exports[`Testing the CELL component Cell renders correct 12`] = `
 exports[`Testing the CELL component Cell renders correct 13`] = `
 <DocumentFragment>
   <div
+    aria-label="1,1"
     class="closedFrame changedBorderColor"
     data-testid="1,1"
     role="cell"
   >
     <div
+      aria-label="1,1"
       class="flagComponent flagTransparent"
-      data-testid="weakFlag_1,1"
+      data-testid="1,1"
     />
   </div>
 </DocumentFragment>

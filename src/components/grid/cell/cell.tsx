@@ -33,10 +33,11 @@ export interface ComponentsMapProps {
   onMouseLeave?: () => void;
   mouseDown?: boolean;
   "data-testid"?: string;
+  "aria-label"?: string;
   role?: string;
 }
 
-type RevealedProps = Pick<ComponentsMapProps, "onContextMenu" | "data-testid" | "role">;
+type RevealedProps = Pick<ComponentsMapProps, "onContextMenu" | "data-testid" | "role" | "aria-label">;
 
 type ExcludeMouseDown = Omit<ComponentsMapProps, "mouseDown">;
 
@@ -78,6 +79,7 @@ export const CellComponent: FunctionComponent<CellProps> = React.memo(({ coords,
     onMouseLeave: onMouseUp,
     mouseDown,
     "data-testid": `${coords}`,
+    "aria-label": `${coords}`,
     role: "cell",
   };
 
@@ -89,26 +91,31 @@ export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ children,
     onContextMenu: rest.onContextMenu,
     "data-testid": rest["data-testid"],
     role: rest.role,
+    "aria-label": rest["aria-label"],
   };
 
   switch (children) {
     case CellState.bomb:
       return (
         <BombFrame {...nonActiveCellProps}>
-          <div className={styles.bombEntity} data-testid={`bomb_${rest["data-testid"]}`} />
+          <div
+            className={styles.bombEntity}
+            aria-label={`${rest["aria-label"]}`}
+            data-testid={`${rest["data-testid"]}`}
+          />
         </BombFrame>
       );
     case CellState.mark:
       return (
         <ClosedFrame {...rest}>
-          <FlagComponent data-testid={`flag_${rest["data-testid"]}`} />
+          <FlagComponent aria-label={`${rest["aria-label"]}`} data-testid={`${rest["data-testid"]}`} />
         </ClosedFrame>
       );
 
     case CellState.weakMark:
       return (
         <ClosedFrame {...rest}>
-          <WeakFlagComponent data-testid={`weakFlag_${rest["data-testid"]}`} />
+          <WeakFlagComponent aria-label={`${rest["aria-label"]}`} data-testid={`${rest["data-testid"]}`} />
         </ClosedFrame>
       );
     case CellState.hidden:
