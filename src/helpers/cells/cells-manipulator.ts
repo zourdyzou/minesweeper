@@ -1,4 +1,4 @@
-import { Cell, Coordinates, Field } from "../field";
+import { Cell, CellState, Coordinates, Field } from "../field";
 
 /**
  * Get neighbour cells indexes
@@ -39,4 +39,42 @@ export const incrementNeighbours = (coords: Coordinates, field: Field): Field =>
   }
 
   return field;
+};
+
+/**
+ * Open cell in the player field using game field info
+ * @param {Coords} coords
+ * @param {Field} playerField
+ * @param {Field} gameField
+ * @returns {Field}
+ */
+
+export const openCell = (coords: Coordinates, playerField: Field, gameField: Field): Field => {
+  const { empty, hidden, bomb } = CellState;
+
+  const [y, x] = coords;
+  const gameCell = gameField[y][x];
+
+  if (gameCell === bomb) throw new Error("Game Over!");
+
+  if (gameCell === empty) {
+    playerField[y][x] = gameCell;
+
+    const items = getNeighbours(coords);
+
+    for (const [y, x] of Object.values(items)) {
+      if (checkItemInField([y, x], gameField)) {
+        const scopedGameCell = gameField[y][x];
+        const scopedPlayerCell = playerField[y][x];
+
+        if (scopedPlayerCell === hidden && scopedGameCell !== bomb) {
+          playerField = openCell([y, x], playerField, gameField);
+        }
+      }
+    }
+  }
+
+  playerField[y][x] = gameCell;
+
+  return playerField;
 };

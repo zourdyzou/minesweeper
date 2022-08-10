@@ -24,6 +24,7 @@ module.exports = {
     "@helpers/(.*)$": "<rootDir>/src/helpers/$1",
     "~hooks/(.*)$": "<rootDir>/src/hooks/$1",
     "@components/(.*)$": "<rootDir>/src/components/$1",
+    "@modules/(.*)$": "<rootDir>/src/modules/$1",
   },
   setupFilesAfterEnv: ["<rootDir>/test/setup.ts"],
   globalTeardown: "<rootDir>/test/teardown.ts",

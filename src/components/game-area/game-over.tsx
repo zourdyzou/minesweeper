@@ -1,4 +1,4 @@
-import React, { FunctionComponent, PropsWithChildren } from "react";
+import React, { FunctionComponent } from "react";
 
 import styles from "./game-section.module.scss";
 
@@ -8,5 +8,9 @@ interface GameOverProps {
 }
 
 export const GameOver: FunctionComponent<GameOverProps> = ({ onClick, isWin }) => {
-  return <div className={styles.gameOverComponent}>{isWin ? "😎" : "🙁"}</div>;
+  return (
+    <div onClick={onClick} className={styles.gameOverComponent}>
+      {isWin ? "😎" : "🙁"}
+    </div>
+  );
 };

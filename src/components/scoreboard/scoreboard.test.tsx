@@ -8,7 +8,7 @@ describe("Scoreboard test cases", () => {
 
   it("Scoreboard renders correctly", () => {
     const { asFragment } = render(
-      <ScoreBoard time="000" levels={levels} onReset={() => null} mines="010" onChange={() => null} />
+      <ScoreBoard time="000" levels={levels} onReset={() => null} mines="010" onChangeLevel={() => null} />
     );
 
     expect(asFragment()).toMatchSnapshot();
@@ -16,7 +16,7 @@ describe("Scoreboard test cases", () => {
   it("Scoreboard select level handler check", async () => {
     const onChange = jest.fn();
 
-    render(<ScoreBoard time="000" levels={levels} onReset={() => null} mines="010" onChange={onChange} />);
+    render(<ScoreBoard time="000" levels={levels} onReset={() => null} mines="010" onChangeLevel={onChange} />);
 
     await userEvent.selectOptions(screen.getByRole("select-component"), "expert");
 

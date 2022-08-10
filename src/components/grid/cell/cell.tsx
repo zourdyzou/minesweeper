@@ -33,10 +33,11 @@ export interface ComponentsMapProps {
   onMouseLeave?: () => void;
   mouseDown?: boolean;
   "data-testid"?: string;
+  "aria-label"?: string;
   role?: string;
 }
 
-type RevealedProps = Pick<ComponentsMapProps, "onContextMenu" | "data-testid" | "role">;
+type RevealedProps = Pick<ComponentsMapProps, "onContextMenu" | "data-testid" | "role" | "aria-label">;
 
 type ExcludeMouseDown = Omit<ComponentsMapProps, "mouseDown">;
 
@@ -54,7 +55,7 @@ export const areEqual = (prevProps: CellProps, nextProps: CellProps): boolean =>
   );
 };
 
-export const CellComponent: FunctionComponent<CellProps> = ({ coords, children, ...restProps }) => {
+export const CellComponent: FunctionComponent<CellProps> = React.memo(({ coords, children, ...restProps }) => {
   const [mouseDown, onMouseDown, onMouseUp] = useMouseDown();
 
   const onClick = () => restProps.onClick(coords);
@@ -78,37 +79,43 @@ export const CellComponent: FunctionComponent<CellProps> = ({ coords, children, 
     onMouseLeave: onMouseUp,
     mouseDown,
     "data-testid": `${coords}`,
+    "aria-label": `${coords}`,
     role: "cell",
   };
 
   return <ComponentsMap children={children} {...props} />;
-};
+}, areEqual);
 
 export const ComponentsMap: FunctionComponent<ComponentsMapProps> = ({ children, ...rest }) => {
   const nonActiveCellProps: RevealedProps = {
     onContextMenu: rest.onContextMenu,
     "data-testid": rest["data-testid"],
     role: rest.role,
+    "aria-label": rest["aria-label"],
   };
 
   switch (children) {
     case CellState.bomb:
       return (
         <BombFrame {...nonActiveCellProps}>
-          <div className={styles.bombEntity} data-testid={`bomb_${rest["data-testid"]}`} />
+          <div
+            className={styles.bombEntity}
+            aria-label={`${rest["aria-label"]}`}
+            data-testid={`${rest["data-testid"]}`}
+          />
         </BombFrame>
       );
     case CellState.mark:
       return (
         <ClosedFrame {...rest}>
-          <FlagComponent data-testid={`flag_${rest["data-testid"]}`} />
+          <FlagComponent aria-label={`${rest["aria-label"]}`} data-testid={`${rest["data-testid"]}`} />
         </ClosedFrame>
       );
 
     case CellState.weakMark:
       return (
         <ClosedFrame {...rest}>
-          <WeakFlagComponent data-testid={`weakFlag_${rest["data-testid"]}`} />
+          <WeakFlagComponent aria-label={`${rest["aria-label"]}`} data-testid={`${rest["data-testid"]}`} />
         </ClosedFrame>
       );
     case CellState.hidden:
