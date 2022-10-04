@@ -137,7 +137,7 @@
     "regenerator-runtime": "~0.13.9",
     "resolve-url-loader": "~4.0.0",
     "sass": "~1.47.0",
-    "sass-loader": "~12.4.0",
+    "sass-loader": "13.0.2",
     "sass-resources-loader": "~2.2.4",
     "simple-git-hooks": "^2.7.0",
     "style-loader": "~3.3.1",
