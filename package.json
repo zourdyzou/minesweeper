@@ -74,7 +74,7 @@
     "@storybook/testing-library": "^0.0.13",
     "@stryker-mutator/core": "^6.1.2",
     "@stryker-mutator/jest-runner": "^6.1.2",
-    "@svgr/webpack": "~6.1.2",
+    "@svgr/webpack": "~6.5.0",
     "@teamsupercell/typings-for-css-modules-loader": "~2.5.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
