@@ -96,7 +96,7 @@
     "cspell": "6.8.0",
     "css-loader": "~6.5.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
-    "cssnano": "~5.0.15",
+    "cssnano": "~5.1.0",
     "eslint": "~8.6.0",
     "eslint-config-airbnb-base": "~15.0.0",
     "eslint-config-airbnb-typescript": "~16.1.0",
