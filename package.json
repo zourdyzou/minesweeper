@@ -94,7 +94,7 @@
     "core-js": "~3.20.2",
     "cross-env": "^7.0.3",
     "cspell": "6.8.0",
-    "css-loader": "~6.5.1",
+    "css-loader": "~6.11.0",
     "css-minimizer-webpack-plugin": "^4.0.0",
     "cssnano": "~5.0.15",
     "eslint": "~8.6.0",
